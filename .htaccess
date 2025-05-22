@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect URLs ending with .php to clean URLs (only numbers and lowercase letters)
+RewriteCond %{THE_REQUEST} \s/templete/([0-9a-z_]+)\.php [NC]
+RewriteRule ^templete/([0-9a-z_]+)\.php$ /templete/$1 [R=301,L]
+
+# Internally rewrite clean URLs back to .php files
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^templete/([0-9a-z_]+)$ /templete/$1.php [L]
